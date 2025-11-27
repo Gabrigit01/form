@@ -1,15 +1,15 @@
 // afficher_reponses.js
 
-// 🔗 Tes informations Supabase
+//  Tes informations Supabase
 const SUPABASE_URL = "https://gyrhemmeabidqflmcnrw.supabase.co";
 const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imd5cmhlbW1lYWFiZHFmbG1jbnJ3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjQyNDI5MTYsImV4cCI6MjA3OTgxODkxNn0._1deFRtpII7FugeMw1FxoFjBmHBCNZNu9-Entb-OM-o";
 
 const supabase = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
-// ⚡ Container où afficher les réponses
+//  Container où afficher les réponses
 const container = document.getElementById("reponses");
 
-// 🔹 Fonction pour récupérer les données
+//  Fonction pour récupérer les données
 async function fetchReponses() {
     const { data, error } = await supabase
         .from("formulaire_iteb")
@@ -27,7 +27,7 @@ async function fetchReponses() {
         return;
     }
 
-    // 🔹 Création de la liste
+    //  Création de la liste
     container.innerHTML = data.map(item => `
         <div class="reponse">
             <h3>${item.entreprise} - ${item.contact}</h3>
@@ -43,5 +43,5 @@ async function fetchReponses() {
     `).join("");
 }
 
-// 🔹 Appel de la fonction
+//  Appel de la fonction
 fetchReponses();

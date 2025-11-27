@@ -1,6 +1,6 @@
 // formulaire.js
 
-// 🔗 Remplace par tes informations Supabase
+//  Remplace par tes informations Supabase
 const SUPABASE_URL = "https://gyrhemmeabidqflmcnrw.supabase.co";
 const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imd5cmhlbW1lYWFiZHFmbG1jbnJ3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjQyNDI5MTYsImV4cCI6MjA3OTgxODkxNn0._1deFRtpII7FugeMw1FxoFjBmHBCNZNu9-Entb-OM-o";
 
@@ -9,7 +9,7 @@ const supabase = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 // FORMULAIRE
 const form = document.getElementById("formulaire");
 
-// ⚡ Affichage conditionnel
+//  Affichage conditionnel
 document.getElementById("choix-app").addEventListener("change", function () {
     document.getElementById("section-app").classList.toggle("hidden", this.value !== "oui");
 });
@@ -22,7 +22,7 @@ document.getElementById("ancien-site").addEventListener("change", function () {
     document.getElementById("section-technique").classList.toggle("hidden", this.value !== "oui");
 });
 
-// 📤 Soumission
+//  Soumission
 form.addEventListener("submit", async (e) => {
     e.preventDefault();
 

@@ -1,16 +1,14 @@
 // formulaire.js
 
-// ⚠️ Configuration Supabase
+// Configuration Supabase
 const SUPABASE_URL = "https://gyrhemmeabidqflmcnrw.supabase.co";
-const SUPABASE_KEY = "sb_publishable_MOh8buKOsYv-Zd4l8eVR2w_ULNDU1_v"; // clé publishable,
-
-// ✅ Création correcte du client
+const SUPABASE_KEY = "sb_publishable_MOh8buKOsYv-Zd4l8eVR2w_ULNDU1_v"; 
 const client = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
 // FORMULAIRE
 const form = document.getElementById("formulaire");
 
-// ✅ Affichage conditionnel
+// Affichage conditionnel
 document.getElementById("choix-app").addEventListener("change", function () {
     document.getElementById("section-app").classList.toggle("hidden", this.value !== "oui");
 });
@@ -23,22 +21,24 @@ document.getElementById("ancien-site").addEventListener("change", function () {
     document.getElementById("section-technique").classList.toggle("hidden", this.value !== "oui");
 });
 
-// ✅ Soumission du formulaire
+// Soumission du formulaire
 form.addEventListener("submit", async (e) => {
     e.preventDefault();
 
     const data = Object.fromEntries(new FormData(form));
 
-    
+    try {
+        const { error } = await client.from("formulaire_iteb").insert([data]);
 
-    // ✅ Envoi vers Supabase
-    //const { error } = await client.from("formulaire_iteb").insert([data]);
-
-    if (error) {
-        console.log(error);;
-        alert("❌ " + error.message);
-    } else {
-        alert("✅ Formulaire envoyé avec succès !");
-        form.reset();
+        if (error) {
+            console.error(error);
+            alert("❌ " + error.message);
+        } else {
+            alert("✅ Formulaire envoyé avec succès !");
+            form.reset();
+        }
+    } catch (err) {
+        console.error(err);
+        alert("❌ Une erreur inattendue est survenue !");
     }
 });

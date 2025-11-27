@@ -5,15 +5,19 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Questionnaire – ITEB Africa</title>
 <link rel="stylesheet" href="style.css">
+<style>
+.hidden { display: none; }
+</style>
 </head>
+
 <body>
 
 <div class="container">
 <h1>Questionnaire – Analyse des besoins</h1>
-<p>Veuillez remplir ce formulaire afin que nous comprenions vos besoins pour la conception du site ou de l’application ITEB Africa.</p>
+<p>Veuillez remplir ce formulaire afin que nous comprenions vos besoins.</p>
 
-<form action="process.php" method="POST" enctype="multipart/form-data">
-    <!-- 1. Informations générales -->
+<form id="formulaire">
+
     <h2>1. Informations générales</h2>
     <label>Nom de l’entreprise :</label>
     <input type="text" name="entreprise" required>
@@ -30,14 +34,13 @@
     <label>Téléphone :</label>
     <input type="text" name="telephone">
 
-    <!-- 2. Objectifs du projet -->
-    <h2>2. Objectifs du projet</h2>
+    <h2>2. Objectifs</h2>
     <label>Objectif principal :</label>
     <select name="objectif">
-        <option>Présentation de l’entreprise</option>
+        <option>Présentation</option>
         <option>Vente de services</option>
-        <option>Plateforme / Mise en relation</option>
-        <option>Formations / E-learning</option>
+        <option>Plateforme</option>
+        <option>Formation</option>
         <option>Autre</option>
     </select>
 
@@ -49,15 +52,13 @@
         <option value="non">Non</option>
     </select>
 
-    <label>Attentes du projet :</label>
-    <textarea name="attentes" rows="4"></textarea>
+    <label>Attentes :</label>
+    <textarea name="attentes"></textarea>
 
-    <!-- 3. Section Application (conditionnelle) -->
     <div id="section-app" class="hidden">
         <h2>Développement de l'application</h2>
-        <p>Remplissez cette section uniquement si vous souhaitez développer une application.</p>
 
-        <label>Type d’application :</label>
+        <label>Type d'application :</label>
         <select name="type_app">
             <option>Android</option>
             <option>iOS</option>
@@ -66,12 +67,12 @@
         </select>
 
         <label>Fonctionnalités principales :</label>
-        <textarea name="fonction_app" rows="4" placeholder="Ex : Paiement, chat, tracking…"></textarea>
+        <textarea name="fonction_app"></textarea>
 
         <label>Gestion des utilisateurs :</label>
-        <textarea name="gestion_utilisateurs" rows="3" placeholder="Ex : rôles admin, client, partenaire…"></textarea>
+        <textarea name="gestion_utilisateurs"></textarea>
 
-        <label>Souhaitez-vous un système de paiement ?</label>
+        <label>Système de paiement ?</label>
         <select id="paiement" name="paiement">
             <option value="non">Non</option>
             <option value="oui">Oui</option>
@@ -79,54 +80,46 @@
 
         <div id="section-paiement" class="hidden">
             <h3>Détails Paiement</h3>
-            <label>Modes de paiement :</label>
+
+            <label>Mode paiement :</label>
             <select name="mode_paiement">
                 <option>Mobile Money</option>
                 <option>Carte bancaire</option>
                 <option>PayPal</option>
-                <option>Plusieurs méthodes</option>
             </select>
 
-            <label>Voulez-vous génération automatique de reçus ?</label>
+            <label>Reçu automatique ?</label>
             <select name="recu_auto">
                 <option>Oui</option>
                 <option>Non</option>
             </select>
         </div>
 
-        <label>Souhaitez-vous des notifications ?</label>
+        <label>Notifications ?</label>
         <select name="notif">
             <option>Oui</option>
             <option>Non</option>
         </select>
 
-        <label>Autres fonctionnalités spécifiques :</label>
-        <textarea name="autres_fonctions" rows="3" placeholder="Ex : géolocalisation, chat interne, statistiques…"></textarea>
+        <label>Autres fonctionnalités :</label>
+        <textarea name="autres_fonctions"></textarea>
     </div>
 
-    <!-- 4. Public cible -->
     <h2>3. Public cible</h2>
-    <label>Public visé :</label>
-    <input type="text" name="public" placeholder="Ex : entreprises, étudiants…">
+    <input type="text" name="public">
 
     <label>Zone géographique :</label>
     <input type="text" name="zone">
 
-    <!-- 5. Fonctionnalités -->
     <h2>4. Fonctionnalités souhaitées</h2>
-    <textarea name="fonctionnalites" rows="6" placeholder="Listez les fonctionnalités souhaitées"></textarea>
+    <textarea name="fonctionnalites"></textarea>
 
-    <!-- 6. Contenus -->
     <h2>5. Contenus & ressources</h2>
-    <label>Logo, textes ou images disponibles ?</label>
-    <textarea name="contenus" rows="4"></textarea>
+    <textarea name="contenus"></textarea>
 
-    <!-- 7. Pièce jointe -->
     <h2>Pièce jointe</h2>
-    <label>Joindre un document (PDF, Word, Image…) :</label>
     <input type="file" name="document" accept=".pdf,.doc,.docx,.jpg,.jpeg,.png">
 
-    <!-- 8. Ancien site -->
     <h2>6. Ancien site</h2>
     <label>Avez-vous déjà eu un site web ?</label>
     <select id="ancien-site" name="ancien_site">
@@ -135,38 +128,32 @@
     </select>
 
     <div id="section-technique" class="hidden">
-        <h3>Informations sur votre ancien site</h3>
-        <label>Adresse du site (si disponible) :</label>
-        <input type="text" name="ancien_url" placeholder="https://…">
+        <label>Adresse du site :</label>
+        <input type="text" name="ancien_url">
 
-        <label>Quelles ont été les principales difficultés rencontrées ?</label>
-        <textarea name="ancien_difficultes" rows="4"></textarea>
+        <label>Difficultés rencontrées :</label>
+        <textarea name="ancien_difficultes"></textarea>
 
-        <label>Le site était hébergé où ?</label>
+        <label>Hébergement :</label>
         <input type="text" name="ancien_hebergement">
 
-        <label>Était-il régulièrement mis à jour ?</label>
+        <label>Mise à jour ?</label>
         <select name="ancien_maintenance">
             <option>Oui</option>
             <option>Non</option>
-            <option>Je ne sais pas</option>
         </select>
 
-        <label>Pourquoi souhaitez-vous en refaire un aujourd’hui ?</label>
-        <textarea name="ancien_raison" rows="3"></textarea>
+        <label>Pourquoi refaire le site ?</label>
+        <textarea name="ancien_raison"></textarea>
     </div>
 
-    <!-- 9. Design -->
     <h2>7. Design</h2>
-    <label>Style souhaité :</label>
-    <input type="text" name="style" placeholder="Moderne, minimaliste, corporate…">
+    <input type="text" name="style">
 
     <label>Sites inspirants :</label>
-    <textarea name="inspiration" rows="3"></textarea>
+    <textarea name="inspiration"></textarea>
 
-    <!-- 10. Budget & délais -->
     <h2>8. Budget & délai</h2>
-    <label>Budget :</label>
     <select name="budget">
         <option>&lt; 200.000 FCFA</option>
         <option>200.000 – 500.000 FCFA</option>
@@ -174,7 +161,6 @@
         <option>+1.000.000 FCFA</option>
     </select>
 
-    <label>Délai :</label>
     <select name="delai">
         <option>1 à 2 semaines</option>
         <option>3 à 4 semaines</option>
@@ -182,45 +168,19 @@
         <option>Urgent</option>
     </select>
 
-    <!-- 11. Notes -->
     <h2>9. Informations supplémentaires</h2>
-    <textarea name="notes" rows="4" placeholder="Informations complémentaires"></textarea>
+    <textarea name="notes"></textarea>
 
     <button type="submit">Envoyer</button>
 </form>
 </div>
+<!-- Section pour afficher les réponses -->
+<h1>Réponses reçues</h1>
+<div id="reponses"></div>
 
-<script>
-const ancienSite = document.getElementById("ancien-site");
-const sectionTechnique = document.getElementById("section-technique");
-const choixApp = document.getElementById("choix-app");
-const sectionApp = document.getElementById("section-app");
-const paiement = document.getElementById("paiement");
-const sectionPaiement = document.getElementById("section-paiement");
 
-function toggleSection(section, show) {
-    if(show) {
-        section.classList.add("show");
-        section.classList.remove("hidden");
-    } else {
-        section.classList.remove("show");
-        section.classList.add("hidden");
-    }
-}
-
-ancienSite.addEventListener("change", function() {
-    toggleSection(sectionTechnique, this.value === "oui");
-});
-
-choixApp.addEventListener("change", function() {
-    toggleSection(sectionApp, this.value === "oui" || this.value === "futur");
-    if(this.value === "non") toggleSection(sectionPaiement, false);
-});
-
-paiement.addEventListener("change", function() {
-    toggleSection(sectionPaiement, this.value === "oui");
-});
-</script>
+<script type="module" src="formulaire.js"></script>
+<script type="module" src="afficher_reponses.js"></script>
 
 </body>
 </html>

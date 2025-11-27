@@ -180,6 +180,12 @@
 
 <!-- Charger la librairie Supabase -->
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+  window.supabaseClient = supabase.createClient(
+    "https://gyrhemmeabidqflmcnrw.supabase.co",
+    "sb_publishable_MOh8buKOsYv-Zd4l8eVR2w_ULNDU1_v"
+  );
+</script>
 
 <!-- Charger ton fichier JS -->
 <script type="module" src="formulaire.js"></script>

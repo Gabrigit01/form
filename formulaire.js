@@ -2,7 +2,7 @@
 
 // ⚠️ Configuration Supabase
 const SUPABASE_URL = "https://gyrhemmeabidqflmcnrw.supabase.co";
-const SUPABASE_KEY = "TON_PUBLISHABLE_ANON_KEY"; // clé publishable, PAS secret
+const SUPABASE_KEY = "sb_publishable_MOh8buKOsYv-Zd4l8eVR2w_ULNDU1_v"; // clé publishable,
 
 // ✅ Création correcte du client
 const client = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);

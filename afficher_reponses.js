@@ -11,7 +11,7 @@ async function chargerDonnees() {
     const { data, error } = await client
         .from("formulaire_iteb")
         .select("*")
-        .order("date", { ascending: false });
+        .order("created_at", { ascending: false });
 
     if (error) {
         console.error(error);

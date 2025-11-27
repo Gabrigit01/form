@@ -29,11 +29,10 @@ form.addEventListener("submit", async (e) => {
 
     const data = Object.fromEntries(new FormData(form));
 
-    // ✅ Ajout date
-    data.date = new Date().toISOString();
+    
 
     // ✅ Envoi vers Supabase
-    const { error } = await client.from("formulaire_iteb").insert([data]);
+    //const { error } = await client.from("formulaire_iteb").insert([data]);
 
     if (error) {
         console.log(error);;

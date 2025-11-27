@@ -36,8 +36,8 @@ form.addEventListener("submit", async (e) => {
     const { error } = await client.from("formulaire_iteb").insert([data]);
 
     if (error) {
-        console.error(error);
-        alert("❌ Erreur lors de l'envoi !");
+        console.log(error);;
+        alert("❌ " + error.message);
     } else {
         alert("✅ Formulaire envoyé avec succès !");
         form.reset();

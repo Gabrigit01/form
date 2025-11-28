@@ -3,182 +3,223 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Questionnaire – ITEB Africa</title>
+<title>Questionnaire de vos besoins</title>
 <link rel="stylesheet" href="style.css">
+<link rel="icon" type="image/png" href="icon.png">
 <style>
 .hidden { display: none; }
+.section { margin-bottom: 25px; }
+.checkbox-group label {
+    display: block;
+    margin-bottom: 5px;
+}
 </style>
 </head>
 
 <body>
 
 <div class="container">
-<h1>Questionnaire – Analyse des besoins</h1>
-<p>Veuillez remplir ce formulaire afin que nous comprenions vos besoins.</p>
+<h1>Questionnaire Professionnel – Analyse de vos besoins</h1>
+<p>Merci de remplir ce formulaire afin de mieux comprendre votre projet.</p>
 
 <form id="formulaire">
 
-    <h2>1. Informations générales</h2>
-    <label>Nom de l’entreprise :</label>
-    <input type="text" name="entreprise" required>
+<!-- 1. IDENTITÉ -->
+<div class="section">
+<h2>1. Informations générales</h2>
 
-    <label>Personne à contacter :</label>
-    <input type="text" name="contact" required>
+<label>Nom de l’entreprise :</label>
+<input type="text" name="entreprise" required>
 
-    <label>Fonction :</label>
-    <input type="text" name="fonction">
+<label>Personne à contacter :</label>
+<input type="text" name="contact" required>
 
-    <label>Email :</label>
-    <input type="email" name="email" required>
+<label>Fonction :</label>
+<input type="text" name="fonction">
 
-    <label>Téléphone :</label>
-    <input type="text" name="telephone">
+<label>Email :</label>
+<input type="email" name="email" required>
 
-    <h2>2. Objectifs</h2>
-    <label>Objectif principal :</label>
-    <select name="objectif">
-        <option>Présentation</option>
-        <option>Vente de services</option>
-        <option>Plateforme</option>
-        <option>Formation</option>
-        <option>Autre</option>
+<label>Téléphone :</label>
+<input type="text" name="telephone">
+</div>
+
+<!-- 2. SERVICES -->
+<div class="section">
+<h2>2. Objectifs & type de service</h2>
+
+<label>Objectif principal :</label>
+<select name="objectif">
+    <option>Présentation</option>
+    <option>Vente de services</option>
+    <option>Plateforme</option>
+    <option>Formation</option>
+    <option>Autre</option>
+</select>
+
+<label>Type de service recherché :</label>
+<textarea name="attentes" placeholder="Ex : site vitrine, blog,  application, publicité, SEO, branding, stratégie marketing..."></textarea>
+</div>
+
+<!-- 3. APPLICATION -->
+<div class="section">
+<label>Souhaitez-vous une application mobile ?</label>
+<select id="choix-app" name="application">
+    <option value="">-- Sélectionnez --</option>
+    <option value="oui">Oui</option>
+    <option value="futur">Peut-être plus tard</option>
+    <option value="non">Non</option>
+</select>
+
+<div id="section-app" class="hidden">
+<h2>Développement de l'application</h2>
+
+<label>Type d'application :</label>
+<select name="type_app">
+    <option>Android</option>
+    <option>iOS</option>
+    <option>Android + iOS</option>
+    <option>Web (PWA)</option>
+</select>
+
+<label>Fonctionnalités principales :</label>
+<textarea name="fonction_app"></textarea>
+
+<label>Gestion des utilisateurs :</label>
+<textarea name="gestion_utilisateurs"></textarea>
+
+<label>Système de paiement ?</label>
+<select id="paiement" name="paiement">
+    <option value="non">Non</option>
+    <option value="oui">Oui</option>
+</select>
+
+<div id="section-paiement" class="hidden">
+<h3>Détails Paiement</h3>
+
+<label>Mode paiement :</label>
+<select name="mode_paiement">
+    <option>Mobile Money</option>
+    <option>Carte bancaire</option>
+    <option>PayPal</option>
+</select>
+
+<label>Reçu automatique ?</label>
+<select name="recu_auto">
+    <option>Oui</option>
+    <option>Non</option>
+</select>
+</div>
+
+<label>Notifications ?</label>
+<select name="notif">
+    <option>Oui</option>
+    <option>Non</option>
+</select>
+
+<label>Autres fonctionnalités :</label>
+<textarea name="autres_fonctions"></textarea>
+</div>
+</div>
+
+<!-- 4. PUBLIC -->
+<div class="section">
+<h2>3. Public cible</h2>
+<input type="text" name="public" placeholder="Ex : entreprises, particuliers, ONG...">
+
+<label>Zone géographique :</label>
+<input type="text" name="zone">
+</div>
+
+<!-- 5. FONCTIONNALITÉS -->
+<div class="section">
+<h2>4. Fonctionnalités souhaitées</h2>
+<textarea name="fonctionnalites"></textarea>
+</div>
+
+<!-- 6. CONTENUS -->
+<div class="section">
+<h2>5. Contenus & Ressources</h2>
+<textarea name="contenus"></textarea>
+</div>
+
+<!-- 7. DOCUMENT -->
+<div class="section">
+<h2>Pièce jointe</h2>
+<input type="file" name="document">
+</div>
+
+<!-- 8. ANCIEN SITE -->
+<div class="section">
+<h2>6. Ancien site</h2>
+
+<label>Avez-vous déjà eu un site web ?</label>
+<select id="ancien-site" name="ancien_site">
+    <option value="non">Non</option>
+    <option value="oui">Oui</option>
+</select>
+
+<div id="section-technique" class="hidden">
+    <label>Adresse du site :</label>
+    <input type="text" name="ancien_url">
+
+    <label>Difficultés :</label>
+    <textarea name="ancien_difficultes"></textarea>
+
+    <label>Hébergement :</label>
+    <input type="text" name="ancien_hebergement">
+
+    <label>Mise à jour ?</label>
+    <select name="ancien_maintenance">
+        <option>Oui</option>
+        <option>Non</option>
     </select>
 
-    <label>Souhaitez-vous une application mobile ?</label>
-    <select id="choix-app" name="application">
-        <option value="">-- Sélectionnez --</option>
-        <option value="oui">Oui</option>
-        <option value="futur">Peut-être plus tard</option>
-        <option value="non">Non</option>
-    </select>
+    <label>Pourquoi refaire le site ?</label>
+    <textarea name="ancien_raison"></textarea>
+</div>
+</div>
 
-    <label>Attentes :</label>
-    <textarea name="attentes"></textarea>
+<!-- 9. DESIGN -->
+<div class="section">
+<h2>7. Design & inspiration</h2>
+<input type="text" name="style" placeholder="Ex : moderne, minimaliste...">
 
-    <div id="section-app" class="hidden">
-        <h2>Développement de l'application</h2>
+<label>Sites inspirants :</label>
+<textarea name="inspiration"></textarea>
+</div>
 
-        <label>Type d'application :</label>
-        <select name="type_app">
-            <option>Android</option>
-            <option>iOS</option>
-            <option>Android + iOS</option>
-            <option>Web (PWA)</option>
-        </select>
+<!-- 10. BUDGET -->
+<div class="section">
+<h2>8. Budget & délai</h2>
 
-        <label>Fonctionnalités principales :</label>
-        <textarea name="fonction_app"></textarea>
+<select name="budget">
+    <option>&lt; 200.000 FCFA</option>
+    <option>200.000 – 500.000 FCFA</option>
+    <option>500.000 – 1.000.000 FCFA</option>
+    <option>+1.000.000 FCFA</option>
+</select>
 
-        <label>Gestion des utilisateurs :</label>
-        <textarea name="gestion_utilisateurs"></textarea>
+<select name="delai">
+    <option>1 à 2 semaines</option>
+    <option>3 à 4 semaines</option>
+    <option>1 à 2 mois</option>
+    <option>Urgent</option>
+</select>
+</div>
 
-        <label>Système de paiement ?</label>
-        <select id="paiement" name="paiement">
-            <option value="non">Non</option>
-            <option value="oui">Oui</option>
-        </select>
+<!-- 11. NOTES -->
+<div class="section">
+<h2>9. Informations supplémentaires</h2>
+<textarea name="notes"></textarea>
+</div>
 
-        <div id="section-paiement" class="hidden">
-            <h3>Détails Paiement</h3>
+<button type="submit">Envoyer</button>
 
-            <label>Mode paiement :</label>
-            <select name="mode_paiement">
-                <option>Mobile Money</option>
-                <option>Carte bancaire</option>
-                <option>PayPal</option>
-            </select>
-
-            <label>Reçu automatique ?</label>
-            <select name="recu_auto">
-                <option>Oui</option>
-                <option>Non</option>
-            </select>
-        </div>
-
-        <label>Notifications ?</label>
-        <select name="notif">
-            <option>Oui</option>
-            <option>Non</option>
-        </select>
-
-        <label>Autres fonctionnalités :</label>
-        <textarea name="autres_fonctions"></textarea>
-    </div>
-
-    <h2>3. Public cible</h2>
-    <input type="text" name="public">
-
-    <label>Zone géographique :</label>
-    <input type="text" name="zone">
-
-    <h2>4. Fonctionnalités souhaitées</h2>
-    <textarea name="fonctionnalites"></textarea>
-
-    <h2>5. Contenus & ressources</h2>
-    <textarea name="contenus"></textarea>
-
-    <h2>Pièce jointe</h2>
-    <input type="file" name="document" accept=".pdf,.doc,.docx,.jpg,.jpeg,.png">
-
-    <h2>6. Ancien site</h2>
-    <label>Avez-vous déjà eu un site web ?</label>
-    <select id="ancien-site" name="ancien_site">
-        <option value="non">Non</option>
-        <option value="oui">Oui</option>
-    </select>
-
-    <div id="section-technique" class="hidden">
-        <label>Adresse du site :</label>
-        <input type="text" name="ancien_url">
-
-        <label>Difficultés rencontrées :</label>
-        <textarea name="ancien_difficultes"></textarea>
-
-        <label>Hébergement :</label>
-        <input type="text" name="ancien_hebergement">
-
-        <label>Mise à jour ?</label>
-        <select name="ancien_maintenance">
-            <option>Oui</option>
-            <option>Non</option>
-        </select>
-
-        <label>Pourquoi refaire le site ?</label>
-        <textarea name="ancien_raison"></textarea>
-    </div>
-
-    <h2>7. Design</h2>
-    <input type="text" name="style">
-
-    <label>Sites inspirants :</label>
-    <textarea name="inspiration"></textarea>
-
-    <h2>8. Budget & délai</h2>
-    <select name="budget">
-        <option>&lt; 200.000 FCFA</option>
-        <option>200.000 – 500.000 FCFA</option>
-        <option>500.000 – 1.000.000 FCFA</option>
-        <option>+1.000.000 FCFA</option>
-    </select>
-
-    <select name="delai">
-        <option>1 à 2 semaines</option>
-        <option>3 à 4 semaines</option>
-        <option>1 à 2 mois</option>
-        <option>Urgent</option>
-    </select>
-
-    <h2>9. Informations supplémentaires</h2>
-    <textarea name="notes"></textarea>
-
-    <button type="submit">Envoyer</button>
 </form>
 </div>
-<!-- Section pour afficher les réponses -->
-<h1>Réponses reçues</h1>
-<div id="reponses"></div>
 
-<!-- Charger la librairie Supabase -->
+<!-- SUPABASE -->
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
   window.supabaseClient = supabase.createClient(
@@ -187,9 +228,32 @@
   );
 </script>
 
-<!-- Charger ton fichier JS -->
 <script type="module" src="formulaire.js"></script>
 <script type="module" src="afficher_reponses.js"></script>
+
+<!-- JS AFFICHAGE CONDITIONNEL -->
+<script>
+const choixApp = document.getElementById("choix-app");
+const sectionApp = document.getElementById("section-app");
+
+choixApp.addEventListener("change", () => {
+    sectionApp.style.display = choixApp.value === "oui" ? "block" : "none";
+});
+
+const paiement = document.getElementById("paiement");
+const sectionPaiement = document.getElementById("section-paiement");
+
+paiement.addEventListener("change", () => {
+    sectionPaiement.style.display = paiement.value === "oui" ? "block" : "none";
+});
+
+const ancien = document.getElementById("ancien-site");
+const tech = document.getElementById("section-technique");
+
+ancien.addEventListener("change", () => {
+    tech.style.display = ancien.value === "oui" ? "block" : "none";
+});
+</script>
 
 </body>
 </html>
